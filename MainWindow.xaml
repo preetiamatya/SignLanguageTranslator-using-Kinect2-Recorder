@@ -1,0 +1,56 @@
+﻿<Window x:Class="SignLanguageTranslator_Record_2D.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:SignLanguageTranslator_Record_2D"
+        Title="SignLanguageTranslator_Record_2D"
+        Height="650" Width="750"
+        Closing="MainWindow_Closing">
+    <Window.Resources>
+        <SolidColorBrush x:Key="MediumGreyBrush" Color="#ff6e6e6e" />
+        <SolidColorBrush x:Key="KinectPurpleBrush" Color="#ff52318f" />
+        <SolidColorBrush x:Key="KinectBlueBrush" Color="#ff00BCF2" />
+
+    </Window.Resources>
+
+    <Grid Margin="10 0 10 0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Image Grid.Row="0" Source="Images\Logo.png" HorizontalAlignment="Left" Stretch="Fill" Height="32" Width="81" Margin="0 10 0 5" />
+        <TextBlock Grid.Row="0" Margin="0 0 -1 0" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="{StaticResource MediumGreyBrush}" FontFamily="Segoe UI" FontSize="18">American Sign Language</TextBlock>
+        <Image Grid.Row="0" Source="Images\Status.png" Stretch="None" HorizontalAlignment="Center" Margin="0 0 0 5" />
+
+        <Grid x:Name="contentGrid" RenderTransformOrigin="0.485,0.278" Margin="1,0,-1,55" Grid.RowSpan="2" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="251*" />
+                <ColumnDefinition Width="110*"/>
+
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+
+
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Vertical"  Margin="0,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="548" Width="492">
+                <Viewbox x:Name="kinectBodyViewbox" Height="547" Margin="0,0,10,0">
+                    <Image Source="{Binding ImageSource}" Stretch="UniformToFill" />
+                </Viewbox>
+
+
+            </StackPanel>
+
+
+            <TextBlock Name="txtGesture" Text="" TextWrapping="Wrap" Margin="0,75,0,0" Foreground="{StaticResource MediumGreyBrush}" FontFamily="Segoe UI" FontSize="14" Grid.Column="1" Height="100px"/>
+
+        </Grid>
+
+        <StatusBar Grid.Row="2" HorizontalAlignment="Stretch" Name="statusBar" VerticalAlignment="Bottom" Background="White" Foreground="{StaticResource MediumGreyBrush}">
+            <StatusBarItem Content="{Binding StatusText}" />
+        </StatusBar>
+    </Grid>
+</Window>
+
